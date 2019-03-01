@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using AbstractAlgebra;
 using AbstractAlgebraMathSet;
 using AbstractAlgebraGroup;
 using AbstractAlgebraGapPerm;
-using AbstractAlgebraCoset;
-using AbstractAlgebraCosetGrouping;
 using AbstractAlgebraQuotientGroup;
+using AbstractAlgebraCosetGrouping;
 
 using static System.Console;
 
-namespace pinter_15_A_4_D4
+namespace pinter_D4_all_quotient_groups
 {
     class Program
     {
@@ -59,23 +59,25 @@ namespace pinter_15_A_4_D4
                 OpString = "·"
             };
 
-            Write("D4 "); D4.ShowOperationTableColored(); WriteLine();
+            WriteLine("normal subgroups: {0}\n", D4.NormalSubgroups());
 
-            var H = D4.Subgroup(new[] { R0, R2, R4, R5 });
+            foreach (var H in D4.NormalSubgroups())
+            {
+                WriteLine("normal subgroup: {0}", H);
+                                
+                WriteLine("  coset grouping:");
 
-            WriteLine("Elements of H: {0}\n", H.Set.ConvertAll(H.Lookup));
+                foreach (var elt in D4.CosetGrouping(H, "H"))
+                    WriteLine("    {0}   {1}", elt.ToMathSet(), elt.Key.ConvertAll(lookup));
+                                
+                WriteLine("  quotient group: {0}\n", D4.QuotientGroup(H));
 
+                D4.QuotientGroup(H).ShowOperationTableColored();
 
-            WriteLine("Elements of quotient group D4/H:\n");
-                        
-            foreach (var elt in D4.CosetGrouping(H, "H"))
-                WriteLine($"{ elt.ToMathSet() }   { elt.Key.ConvertAll(lookup) }");
+                WriteLine("----------------------------------------------------------------------");
 
-            WriteLine();
+            }
 
-            Write("D4/{R0 R2 R4 R5} ");
-
-            D4.QuotientGroup(H).ShowOperationTableColored();
         }
     }
 }

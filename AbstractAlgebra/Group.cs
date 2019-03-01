@@ -124,7 +124,8 @@ namespace AbstractAlgebraGroup
                     Set = subset,
                     Op = Op,
                     Identity = Identity,
-                    Lookup = Lookup
+                    Lookup = Lookup,
+                    OpString = OpString
                 });
             }
         }
