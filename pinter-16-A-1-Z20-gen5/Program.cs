@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using AbstractAlgebra;
 using AbstractAlgebraMathSet;
 using AbstractAlgebraGroup;
 using AbstractAlgebraCosetGrouping;
@@ -32,7 +31,7 @@ namespace pinter_16_A_1_Z20_gen5
             var Z20 = Z(20);
 
             var gen5 = Z20.Subgroup(new[] { 0, 5, 10, 15 });
-
+            
             WriteLine("<5> : {0}\n", gen5.Set);
 
             WriteLine("cosets of <5> :\n");

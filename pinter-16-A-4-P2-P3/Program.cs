@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using AbstractAlgebraPowerSet;
 
-using AbstractAlgebra;
 using AbstractAlgebraMathSet;
 using AbstractAlgebraGroup;
 using AbstractAlgebraGapPerm;

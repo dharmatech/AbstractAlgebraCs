@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 using AbstractAlgebraMathSet;
-using AbstractAlgebraGroup;
-using AbstractAlgebraGapPerm;
 
 using static System.Console;
 
@@ -20,18 +14,8 @@ namespace pinter_13_J_S4
     {
         static void Main(string[] args)
         {
-            var set = SymmetricGroupGapPerm(4);
-            
-            var S4 = new Group<GapPerm>
-            {
-                Identity = set.ElementAt(0),
-                Set = set,
-                Op = (a,b) => a.Compose(b),
-                // Lookup = elt => set.ToList().FindIndex(item => item == elt).ToString()
-            };
-            
-            foreach (var elt in S4.Set) WriteLine("{0,2} :   {1}", S4.Lookup(elt), elt); WriteLine();
-
+            var S4 = SymmetricGroup(4);
+                        
             S4.ShowOperationTableColored(); WriteLine();
 
             S4.ShowInverses();

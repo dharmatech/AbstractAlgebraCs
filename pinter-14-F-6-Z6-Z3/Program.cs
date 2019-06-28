@@ -50,16 +50,16 @@ namespace pinter_14_F_6_Z6_Z3
             IEnumerable<int> Factors(int n) =>
                 Enumerable.Range(1, n).Where(elt => Divisible(n, elt));
 
-            bool RelativelyPrime(int a, int b) =>
-                Factors(a).Intersect(Factors(b)).Count() == 1;
+            //bool RelativelyPrime(int a, int b) =>
+            //    Factors(a).Intersect(Factors(b)).Count() == 1;
 
             bool Prime(int n) =>
                 Enumerable.Range(1, n / 2).Skip(1).Any(elt => Divisible(n, elt)) == false;
 
             // ----------------------------------------------------------------------
 
-            MathSet<int> Kernel(Func<int, int> f_, Group<int> G, Group<int> H) =>
-                G.Set.Where(x => f(x) == H.Identity).ToMathSet();
+            //MathSet<int> Kernel(Func<int, int> f_, Group<int> G, Group<int> H) =>
+            //    G.Set.Where(x => f(x) == H.Identity).ToMathSet();
 
             MathSet<int> Range(Func<int, int> f_, Group<int> G, Group<int> H) =>
                 G.Set.Select(f).ToMathSet();

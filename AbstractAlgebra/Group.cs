@@ -27,7 +27,17 @@ namespace AbstractAlgebraGroup
 
         // ----------------------------------------------------------------------
 
-        public override string ToString() => Set.ConvertAll(a => Lookup(a)).ToString();
+        // public override string ToString() => Set.ConvertAll(a => Lookup(a)).ToString();
+
+        // public override string ToString() => String.Format("G{0}", Set.ConvertAll(a => Lookup(a)).ToString());
+
+        public override string ToString() => 
+            String.Format(
+                "G{{ {0} }}",
+                String.Join(" ", Set.ConvertAll(a => Lookup(a)))
+                );
+
+
 
 
         public T Inverse(T a) => Set.First(elt => EqualityComparer<T>.Default.Equals(Op(a, elt), Identity));

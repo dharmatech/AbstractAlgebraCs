@@ -17,6 +17,6 @@ namespace AbstractAlgebraUtil
             return obj;
         }
 
-        public static T display<T>(this T obj) { WriteLine(obj); return obj; }
+        public static T Display<T>(this T obj) { WriteLine(obj); return obj; }
     }
 }

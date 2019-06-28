@@ -1,5 +1,12 @@
-﻿using AbstractAlgebraUtil;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using AbstractAlgebraCycles;
+using AbstractAlgebraUtil;
+using AbstractAlgebraGapPerm;
 
 using static System.Console;
 
@@ -9,12 +16,22 @@ namespace pinter_08_A_1
     {
         static void Main(string[] args)
         {
-            Cycles.from_string("(145)(37)(682)").display().to_permutation(9).display(); WriteLine();
-            Cycles.from_string("(17)(628)(9354)").display().to_permutation(9).display(); WriteLine();
-            Cycles.from_string("(71825)(36)(49)").display().to_permutation(9).display(); WriteLine();
-            Cycles.from_string("(12)(347)").display().to_permutation(9).display(); WriteLine();
-            Cycles.from_string("(147)(1678)(74132)").display().to_permutation(9).display(); WriteLine();
-            Cycles.from_string("(6148)(2345)(12493)").display().to_permutation(9).display(); WriteLine();
+            // Compute each of the following products in S9.
+            // (Write your answer as a single permutation.)
+            //
+            // (145)(37)(682)
+            // (17)(628)(9354)
+            // (71825)(36)(49)
+            // (12)(347)
+            // (147)(1678)(74132)
+            // (6148)(2345)(12493)
+
+            Cycles.FromString("(145)(37)(682)").Display().ToPermutation(9).DisplayAsFunction(); WriteLine();
+            Cycles.FromString("(17)(628)(9354)").Display().ToPermutation(9).DisplayAsFunction(); WriteLine();
+            Cycles.FromString("(71825)(36)(49)").Display().ToPermutation(9).DisplayAsFunction(); WriteLine();
+            Cycles.FromString("(12)(347)").Display().ToPermutation(9).DisplayAsFunction(); WriteLine();
+            Cycles.FromString("(147)(1678)(74132)").Display().ToPermutation(9).DisplayAsFunction(); WriteLine();
+            Cycles.FromString("(6148)(2345)(12493)").Display().ToPermutation(9).DisplayAsFunction(); WriteLine();
         }
     }
 }

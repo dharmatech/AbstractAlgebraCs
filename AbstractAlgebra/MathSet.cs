@@ -39,7 +39,9 @@ namespace AbstractAlgebraMathSet
 
         // public string AsString() => string.Format("{{ {0} }}", string.Join(" ", this));
 
-        public override string ToString() => string.Format("{{ {0} }}", string.Join(" ", this));
+        // public override string ToString() => string.Format("{{ {0} }}", string.Join(" ", this));
+
+        public override string ToString() => string.Format("S{{ {0} }}", string.Join(" ", this));
 
         public string ToLiteral() => string.Format("new [] {{ {0} }}.ToMathSet()", string.Join(", ", this));
 

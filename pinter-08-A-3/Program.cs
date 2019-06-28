@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using AbstractAlgebraUtil;
-using AbstractAlgebraFunctionIntInt;
-
-using AbstractAlgebra;
-using AbstractAlgebraMathSet;
-using AbstractAlgebraGroup;
-
 using AbstractAlgebraCycles;
+using AbstractAlgebraGapPerm;
+
+using AbstractAlgebraUtil;
 
 using static System.Console;
 
@@ -21,12 +17,13 @@ namespace pinter_08_A_3
     {
         static void Main(string[] args)
         {
-            Cycles.from_string("(137428)").display().to_transpositions().display(); WriteLine();
-            Cycles.from_string("(416)(8235)").display().to_transpositions().display(); WriteLine();
-            Cycles.from_string("(123)(456)(1574)").display().to_transpositions().display(); WriteLine();
+            // Express seach of the following as a product of transpositions in S8.
 
-            // new FunctionIntInt("31428765").to_disjoint_cycles().to_transpositions().display();
-            new FunctionIntInt("31428765").to_disjoint_cycles_alt().to_transpositions().display();
+            Cycles.FromString("(137428)").Display().to_transpositions().Display(); WriteLine();
+            Cycles.FromString("(416)(8235)").Display().to_transpositions().Display(); WriteLine();
+            Cycles.FromString("(123)(456)(1574)").Display().to_transpositions().Display(); WriteLine();
+
+            new GapPerm(0, 3, 1, 4, 2, 8, 7, 6, 5).Display().ToDisjointCycles().to_transpositions().Display();
         }
     }
 }

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{67CD0467-3A58-4656-BFC9-F7C647457510}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>AbstractAlgebra</RootNamespace>
     <AssemblyName>AbstractAlgebra</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
@@ -34,8 +34,9 @@
     <WarningLevel>4</WarningLevel>
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -51,23 +52,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="alternating_group.cs" />
+    <Compile Include="AlternatingGroup.cs" />
+    <Compile Include="AlternatingGroupFII.cs" />
     <Compile Include="CartesianProduct.cs" />
     <Compile Include="Coset.cs" />
     <Compile Include="CosetGrouping.cs" />
     <Compile Include="GapPerm.cs" />
+    <Compile Include="Generate.cs" />
+    <Compile Include="GetPermutations.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="Cycles.cs" />
     <Compile Include="FunctionIntInt.cs" />
+    <Compile Include="Homomorphism.cs" />
+    <Compile Include="Isomorphism.cs" />
     <Compile Include="MathSet.cs" />
-    <Compile Include="permutation.cs" />
+    <Compile Include="PinterGroupCheckerboard.cs" />
     <Compile Include="PowerSet.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuotientGroup.cs" />
-    <Compile Include="show_operation_table.cs" />
+    <Compile Include="ShowCosets.cs" />
+    <Compile Include="StandardGroupD4.cs" />
+    <Compile Include="StandardGroupP.cs" />
+    <Compile Include="StandardGroupS3.cs" />
+    <Compile Include="StandardGroupZ.cs" />
+    <Compile Include="StandardGroupZxZ.cs" />
+    <Compile Include="StandardGroupZxZxZ.cs" />
     <Compile Include="SymmetricGroup.cs" />
+    <Compile Include="SymmetricGroupFII.cs" />
     <Compile Include="util.cs" />
+    <Compile Include="ZipMany.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -4,11 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using AbstractAlgebraCycles;
+
+using static System.Console;
+
 // consider - Succinct representations of permutations and functions
 // https://www.sciencedirect.com/science/article/pii/S0304397512002253
 
 namespace AbstractAlgebraFunctionIntInt
 {
+    public static class Extensions
+    {
+        //public static FunctionIntInt to_permutation(this Cycles cycles, int n) =>
+        //    new FunctionIntInt(
+        //        Enumerable.Range(1, n)
+        //            .Select(i => (i, cycles.apply_multiple(i))));
+
+        public static FunctionIntInt ToPermutation(this Cycles cycles, int n) =>
+            new FunctionIntInt(
+                Enumerable.Range(1, n)
+                    .Select(i => (i, cycles.apply_multiple(i))));
+
+    }
+
     public class FunctionSetComparer : IEqualityComparer<IEnumerable<FunctionIntInt>>
     {
         public bool Equals(IEnumerable<FunctionIntInt> a, IEnumerable<FunctionIntInt> b) => new HashSet<FunctionIntInt>(a).SetEquals(b);
@@ -98,6 +116,49 @@ namespace AbstractAlgebraFunctionIntInt
 
         public FunctionIntInt Inverse() =>
             new FunctionIntInt(ls.Select(elt => (elt.Item2, elt.Item1)).OrderBy(elt => elt.Item1));
+
+        //public Cycles to_disjoint_cycles_alt() =>
+        //    Enumerable.Range(1, ls.Select(elt => elt.Item1).Max())
+        //        .Aggregate(
+        //            new Cycles(),
+
+        //        )
+
+        public Cycle get_cycle_alt(int i)
+        {
+            var result = new List<int>();
+
+            while (true)
+            {
+                if (result.Contains(i)) return new Cycle(result);
+
+                result.Add(i);
+
+                i = Apply(i);
+            }
+        }
+
+        public Cycles to_disjoint_cycles_alt() =>
+            Enumerable.Range(1, ls.Select(elt => elt.Item1).Max())
+                .Aggregate(
+                    new Cycles(),
+                    (cycles, i) =>
+                        cycles.SelectMany(elt => elt).Contains(i) ? cycles :
+                        Apply(i) == i ? cycles :
+                        new Cycles(cycles.Concat(new[] { get_cycle_alt(i) })));
+
+        public void DisplayAsFunction()
+        {
+            foreach (var elt in ls.OrderBy(elt => elt.Item1))
+                Write("{0} ", elt.Item1);
+
+            WriteLine();
+
+            foreach (var elt in ls.OrderBy(elt => elt.Item1))
+                Write("{0} ", elt.Item2);
+
+            WriteLine();
+        }
 
     }
 }

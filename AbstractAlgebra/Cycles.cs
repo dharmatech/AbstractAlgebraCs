@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using AbstractAlgebraFunctionIntInt;
-// using AbstractAlgebraGapPerm;
+using static System.Console;
 
 namespace AbstractAlgebraCycles
 {
@@ -16,30 +15,30 @@ namespace AbstractAlgebraCycles
 
         public static Cycles ToCycles(this IEnumerable<Cycle> seq) => new Cycles(seq);
 
-        public static Cycle to_cycle(this string s) => Cycles.from_string(s).ElementAt(0).ToCycle();
+        public static Cycle to_cycle(this string s) => Cycles.FromString(s).ElementAt(0).ToCycle();
 
-        public static Cycle get_cycle_alt(this FunctionIntInt f, int i)
-        {
-            var result = new List<int>();
+        //public static Cycle get_cycle_alt(this FunctionIntInt f, int i)
+        //{
+        //    var result = new List<int>();
 
-            while (true)
-            {
-                if (result.Contains(i)) return new Cycle(result);
+        //    while (true)
+        //    {
+        //        if (result.Contains(i)) return new Cycle(result);
 
-                result.Add(i);
+        //        result.Add(i);
 
-                i = f.Apply(i);
-            }
-        }
+        //        i = f.Apply(i);
+        //    }
+        //}
 
-        public static Cycles to_disjoint_cycles_alt(this FunctionIntInt f) =>
-            Enumerable.Range(1, f.ls.Select(elt => elt.Item1).Max())
-                .Aggregate(
-                    new Cycles(),
-                    (cycles, i) =>
-                        cycles.SelectMany(elt => elt).Contains(i) ? cycles :
-                        f.Apply(i) == i ? cycles :
-                        new Cycles(cycles.Concat(new[] { f.get_cycle_alt(i) })));
+        //public static Cycles to_disjoint_cycles_alt(this FunctionIntInt f) =>
+        //    Enumerable.Range(1, f.ls.Select(elt => elt.Item1).Max())
+        //        .Aggregate(
+        //            new Cycles(),
+        //            (cycles, i) =>
+        //                cycles.SelectMany(elt => elt).Contains(i) ? cycles :
+        //                f.Apply(i) == i ? cycles :
+        //                new Cycles(cycles.Concat(new[] { f.get_cycle_alt(i) })));
 
 
 
@@ -90,6 +89,8 @@ namespace AbstractAlgebraCycles
 
         public override string ToString() => "(" + String.Join("", ls.Select(elt => elt.ToString())) + ")";
 
+        public string AsLiteral() => String.Format("new Cycle({0})", String.Join(", ", ls));
+
         public void Add(int i) => ls.Add(i);
 
         public Cycles to_transpositions() => ls.Reverse<int>().Skip(1).Select(elt => new Cycle { ls.Last(), elt }).ToCycles();
@@ -112,7 +113,7 @@ namespace AbstractAlgebraCycles
 
         public Cycles(params Cycle[] items) => ls = items.ToList();
 
-        public static Cycles from_string(string s)
+        public static Cycles FromString(string s)
         {
             var result = new Cycles();
 
@@ -138,6 +139,13 @@ namespace AbstractAlgebraCycles
 
             return String.Join("", ls.Select(elt => elt.ToString()));
         }
+
+        public Cycles DisplayAsLiteral()
+        {
+            WriteLine("new Cycles({0})", String.Join(", ", ls.Select(elt => elt.AsLiteral())));
+
+            return this;
+        }
             
 
         public void Add(Cycle cycle) => ls.Add(cycle);
@@ -146,9 +154,8 @@ namespace AbstractAlgebraCycles
 
         public int apply_multiple(int a) => ls.Reverse<Cycle>().Aggregate(a, (elt, cycle) => cycle.apply(elt));
 
-        public FunctionIntInt to_permutation(int n) =>
-            new FunctionIntInt(Enumerable.Range(1, n).Select(i => (i, apply_multiple(i))));
-
+        //public FunctionIntInt to_permutation(int n) =>
+        //    new FunctionIntInt(Enumerable.Range(1, n).Select(i => (i, apply_multiple(i))));
 
     }
 

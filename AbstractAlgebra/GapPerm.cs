@@ -8,8 +8,23 @@ using System.Collections.Immutable;
 
 using AbstractAlgebraCycles;
 
+using static System.Console;
+
 namespace AbstractAlgebraGapPerm
 {
+    public static class Extensions
+    {
+        public static GapPerm ToPermutation(this Cycles cycles, int n)
+        {
+            var arr = (Enumerable.Repeat(0, n + 1)).ToArray();
+
+            foreach (var i in Enumerable.Range(1, n))
+                arr[i] = cycles.apply_multiple(i);
+
+            return new GapPerm(arr);
+        }
+    }
+
     public class GapPerm : IEquatable<GapPerm>
     {
         public readonly ImmutableArray<int> arr;
@@ -32,7 +47,7 @@ namespace AbstractAlgebraGapPerm
 
         public GapPerm(string s)
         {
-            var cycles = Cycles.from_string(s);
+            var cycles = Cycles.FromString(s);
 
             var n = cycles.Select(cycle => cycle.Max()).Max();
 
@@ -79,6 +94,16 @@ namespace AbstractAlgebraGapPerm
         public override string ToString()
         {
             return ToDisjointCycles().ToString();
+        }
+
+        public string AsLiteral() =>
+            String.Format("new GapPerm({0})", String.Join(", ", arr));
+
+        public GapPerm DisplayAsLiteral()
+        {
+            WriteLine(AsLiteral());
+
+            return this;
         }
 
         // ------------------------------------------------------------
@@ -159,6 +184,18 @@ namespace AbstractAlgebraGapPerm
                         new Cycles(cycles.Concat(new[] { GetCycle(i) })));
         }
 
+        public void DisplayAsFunction()
+        {
+            Write("/ ");
+            foreach (var i in Enumerable.Range(0, arr.Length))
+                Write("{0} ", i);
+            WriteLine("\\");
+
+            Write("\\ ");
+            foreach (var elt in arr)
+                Write("{0} ", elt);
+            WriteLine("/");
+        }
 
     }
 }

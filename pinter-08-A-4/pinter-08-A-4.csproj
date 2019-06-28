@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BB043B7B-C53A-4D78-B40E-B9DAA77737CD}</ProjectGuid>
+    <ProjectGuid>{83865D44-72C1-4F35-89F3-3CFC7DCEBBE2}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>pinter_08_A_4</RootNamespace>
     <AssemblyName>pinter-08-A-4</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

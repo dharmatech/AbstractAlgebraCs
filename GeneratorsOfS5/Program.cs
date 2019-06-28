@@ -20,9 +20,9 @@ namespace GeneratorsOfS5
     {
         static void Main(string[] args)
         {
-            var e = Cycles.from_string("()")     .to_permutation(5);
-            var a = Cycles.from_string("(12)")   .to_permutation(5);    // Perm(5, "(12)")
-            var b = Cycles.from_string("(12345)").to_permutation(5);    // Perm(5, "(12345)")
+            var e = Cycles.FromString("()")     .ToPermutation(5);
+            var a = Cycles.FromString("(12)")   .ToPermutation(5);    // Perm(5, "(12)")
+            var b = Cycles.FromString("(12345)").ToPermutation(5);    // Perm(5, "(12345)")
 
             // GenerateGroup (i, set)
          

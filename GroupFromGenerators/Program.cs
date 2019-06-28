@@ -68,8 +68,8 @@ namespace GroupFromGenerators
 
         static (int i, List<FunctionIntInt>) GroupFromGeneratorsAlt(int n, params string[] items) =>
             GroupFromGeneratorsAlt(
-                items.Select(str => Cycles.from_string(str).to_permutation(n)),
-                Cycles.from_string("()").to_permutation(n));
+                items.Select(str => Cycles.FromString(str).ToPermutation(n)),
+                Cycles.FromString("()").ToPermutation(n));
 
 
         static (int i, List<FunctionIntInt>) GroupFromGenerators(IEnumerable<FunctionIntInt> set, FunctionIntInt identity)
@@ -107,8 +107,8 @@ namespace GroupFromGenerators
 
         static (int i, List<FunctionIntInt>) GroupFromGenerators(int n, params string[] items) =>
             GroupFromGenerators(
-                items.Select(str => Cycles.from_string(str).to_permutation(n)),
-                Cycles.from_string("()").to_permutation(n));
+                items.Select(str => Cycles.FromString(str).ToPermutation(n)),
+                Cycles.FromString("()").ToPermutation(n));
 
         static void ShowInfo((int i, IEnumerable<FunctionIntInt> items) tuple) => WriteLine("i: {0,4}    count: {1,4}", tuple.i, tuple.items.Count());
         

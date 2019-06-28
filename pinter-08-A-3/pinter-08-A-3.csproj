@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8676EEF3-52C8-49B7-A1AC-E4EE99FAE7CA}</ProjectGuid>
+    <ProjectGuid>{816AF9DE-BB84-4B10-B96A-64FFE8793FDC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>pinter_08_A_3</RootNamespace>
     <AssemblyName>pinter-08-A-3</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,13 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\AbstractAlgebra\AbstractAlgebra.csproj">
       <Project>{67cd0467-3a58-4656-bfc9-f7c647457510}</Project>
       <Name>AbstractAlgebra</Name>
     </ProjectReference>
   </ItemGroup>
-
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
